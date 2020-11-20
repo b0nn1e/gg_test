@@ -21,6 +21,17 @@ describe CampaignManager::Creator do
     it { expect(Campaign.count).to eq(1) }
   end
 
+  context 'run job' do
+    let(:job_args) { { campaign_id: Campaign.last.id } }
+
+    before do
+      allow(BuildMailersJob).to receive(:perform_later)
+      described_class.call(params)
+    end
+
+    it { expect(BuildMailersJob).to have_received(:perform_later).with(job_args) }
+  end
+
   context 'when params is empty' do
     subject!(:result) { described_class.call(params) }
 

@@ -15,12 +15,14 @@ module CampaignManager
     end
 
     def call
-      camping = Campaign.new(subject: subject, message: message)
-      camping.recipients = create_recipients
-      if camping.valid?
-        camping.save
+      campaign = Campaign.new(subject: subject, message: message)
+      campaign.recipients = create_recipients
+      if campaign.valid?
+        campaign.save
+        BuildMailersJob.perform_later(campaign_id: campaign.id)
+        true
       else
-        add_errors(camping.errors) unless camping.valid?
+        add_errors(campaign.errors) unless campaign.valid?
       end
     end
 
