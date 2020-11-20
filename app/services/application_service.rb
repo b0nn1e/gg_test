@@ -5,8 +5,8 @@ class ApplicationService
 
   attr_accessor :args, :response
 
-  def self.call(*args)
-    service = new(*args)
+  def self.call(args)
+    service = new(args)
     service.call_in_transaction
     service.returns
   end
