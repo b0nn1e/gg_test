@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :campaign do
-    subject { 'subject' }
-    message { 'message' }
+    subject { generate(:subject) }
+    message { generate(:message) }
   end
 
   factory :recipient do
@@ -10,5 +10,13 @@ FactoryBot.define do
 
   sequence :email do |n|
     "recipient#{n}@gmail.com"
+  end
+
+  sequence :subject do |n|
+    "subject #{n}"
+  end
+
+  sequence :message do |n|
+    "message #{n}"
   end
 end
