@@ -32,7 +32,7 @@ shared_examples 'check user auth' do
   end
 
   context 'when authorization token is invalid' do
-    let(:token) { Api::ApiController::TOKEN }
+    let(:token) { Api::BaseController::TOKEN }
 
     before { request.headers['Authorization'] = "Bearer #{token.reverse}" }
 
@@ -46,18 +46,6 @@ shared_examples 'check user auth' do
       action.call
 
       expect(response.body).to eq(expected_un_authorize_body)
-    end
-  end
-
-  context 'when authorization token is invalid' do
-    let(:token) { Api::ApiController::TOKEN }
-
-    before { request.headers['Authorization'] = "Bearer #{token}" }
-
-    it 'returns 401 status' do
-      action.call
-
-      expect(response.status).not_to eq(401)
     end
   end
 end
