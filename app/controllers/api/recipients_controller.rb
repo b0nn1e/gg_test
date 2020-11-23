@@ -9,7 +9,7 @@ module Api
 
     def show
       recipient = Recipients::Item.call(id: params[:id])
-      campaigns = recipient.campaigns.map do |campaign|
+      campaigns = recipient.campaigns.ordered.map do |campaign|
         {
           id: campaign.id,
           subject: campaign.subject,
