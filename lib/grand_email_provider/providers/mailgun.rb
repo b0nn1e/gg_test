@@ -8,9 +8,10 @@ module GrandEmailProvider
 
       def initialize
         super
-        # TODO: move to secrets
-        self.client = ::Mailgun::Client.new('your-api-key')
-        self.domain = 'example.com'
+
+        credentials = Rails.application.credentials.mailgun
+        self.client = credentials[:key]
+        self.domain = credentials[:domain]
       end
 
       def send_email(email, subject, message)
