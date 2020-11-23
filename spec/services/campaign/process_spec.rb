@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Campaigns::Sender do
+describe Campaigns::Process do
   let(:campaign) { create(:campaign, customers: [customer1, customer2]) }
   let(:customer1) { create(:customer) }
   let(:customer2) { create(:customer) }

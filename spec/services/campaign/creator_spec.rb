@@ -25,11 +25,11 @@ describe Campaigns::Creator do
     let(:job_args) { { campaign_id: Campaign.last.id } }
 
     before do
-      allow(BuildMailersJob).to receive(:perform_later)
+      allow(ProcessCampaignJob).to receive(:perform_later)
       described_class.call(params)
     end
 
-    it { expect(BuildMailersJob).to have_received(:perform_later).with(job_args) }
+    it { expect(ProcessCampaignJob).to have_received(:perform_later).with(job_args) }
   end
 
   context 'when params is empty' do
