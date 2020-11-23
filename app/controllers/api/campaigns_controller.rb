@@ -4,7 +4,7 @@ module Api
   class CampaignsController < BaseController
 
     def create
-      result = CampaignManager::Creator.call(permitted_params.to_h)
+      result = Campaigns::Creator.call(permitted_params.to_h)
 
       if result.success?
         head :created

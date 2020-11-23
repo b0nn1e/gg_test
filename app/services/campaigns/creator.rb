@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module CampaignManager
+module Campaigns
   class Creator < ApplicationService
     EMAILS_DELIMITER = ','
     attr_accessor :subject, :message, :emails
@@ -31,7 +31,7 @@ module CampaignManager
     def create_recipients
       recipients = []
       normalized_emails.each do |email|
-        service = ::RecipientManager::Creator.call(email: email)
+        service = ::Recipients::Creator.call(email: email)
         if service.success?
           recipients.push(service.response)
         else

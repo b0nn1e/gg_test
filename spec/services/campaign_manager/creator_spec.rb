@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe CampaignManager::Creator do
+describe Campaigns::Creator do
   let(:emails) { %w[test1@gmail.com test2@gmail.com test3@gmail.com] }
   let(:title) { 'title' }
   let(:message) { 'message' }
