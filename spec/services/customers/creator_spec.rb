@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Recipients::Creator do
+describe Customers::Creator do
   let(:email) { 'validemail@gmail.com' }
   let(:params) { { email: email } }
 
@@ -8,21 +8,21 @@ describe Recipients::Creator do
     subject!(:result) { described_class.call(params) }
 
     it { expect(result.success?).to be_truthy }
-    it { expect(result.response.class).to be(Recipient) }
+    it { expect(result.response.class).to be(Customer) }
     it { expect(result.response.persisted?).to be_truthy }
     it { expect(result.errors.full_messages).to eq([]) }
-    it { expect(Recipient.count).to eq(1) }
+    it { expect(Customer.count).to eq(1) }
   end
 
   context 'when email already exists' do
     subject!(:result) { described_class.call(params) }
 
-    let!(:existing_recipient) { create(:recipient) }
-    let(:email) { existing_recipient.email }
+    let!(:existing_customer) { create(:customer) }
+    let(:email) { existing_customer.email }
 
     it { expect(result.success?).to be_truthy }
-    it { expect(Recipient.count).to eq(1) }
-    it { expect(result.response).to eq(existing_recipient) }
+    it { expect(Customer.count).to eq(1) }
+    it { expect(result.response).to eq(existing_customer) }
   end
 
   context 'when email invalid' do
@@ -32,7 +32,7 @@ describe Recipients::Creator do
     let(:expected_errors) { ['Email is invalid'] }
 
     it { expect(result.success?).to be_falsey }
-    it { expect(Recipient.count).to eq(0) }
+    it { expect(Customer.count).to eq(0) }
     it { expect(result.response).to be_nil }
     it { expect(result.errors.full_messages).to eq(expected_errors) }
   end
@@ -44,7 +44,7 @@ describe Recipients::Creator do
     let(:expected_errors) { ["Email can't be blank", "Email is invalid"] }
 
     it { expect(result.success?).to be_falsey }
-    it { expect(Recipient.count).to eq(0) }
+    it { expect(Customer.count).to eq(0) }
     it { expect(result.response).to be_nil }
     it { expect(result.errors.full_messages).to eq(expected_errors) }
   end

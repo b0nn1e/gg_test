@@ -1,4 +1,4 @@
-module Recipients
+module Customers
   class Creator < ApplicationService
     attr_accessor :email
 
@@ -10,12 +10,12 @@ module Recipients
     end
 
     def call
-      recipient = Recipient.find_or_create_by(email: email)
-      if recipient.valid?
-        recipient.save
-        self.response = recipient
+      customer = Customer.find_or_create_by(email: email)
+      if customer.valid?
+        customer.save
+        self.response = customer
       else
-        add_errors(recipient.errors)
+        add_errors(customer.errors)
       end
     end
   end

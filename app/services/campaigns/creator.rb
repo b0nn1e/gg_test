@@ -16,7 +16,7 @@ module Campaigns
 
     def call
       campaign = Campaign.new(subject: subject, message: message)
-      campaign.recipients = create_recipients
+      campaign.customers = create_customers
       if campaign.valid?
         campaign.save
         BuildMailersJob.perform_later(campaign_id: campaign.id)
@@ -28,17 +28,17 @@ module Campaigns
 
     private
 
-    def create_recipients
-      recipients = []
+    def create_customers
+      customers = []
       normalized_emails.each do |email|
-        service = ::Recipients::Creator.call(email: email)
+        service = ::Customers::Creator.call(email: email)
         if service.success?
-          recipients.push(service.response)
+          customers.push(service.response)
         else
           errors.add(:emails, "'#{email}' is invalid")
         end
       end
-      recipients
+      customers
     end
 
     def normalized_emails

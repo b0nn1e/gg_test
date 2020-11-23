@@ -17,7 +17,7 @@ describe Campaigns::Creator do
 
     it { expect(result.success?).to be_truthy }
     it { expect(result.errors.full_messages).to eq([]) }
-    it { expect(Recipient.count).to eq(3) }
+    it { expect(Customer.count).to eq(3) }
     it { expect(Campaign.count).to eq(1) }
   end
 
@@ -41,7 +41,7 @@ describe Campaigns::Creator do
     end
 
     it { expect(result.success?).to be_falsey }
-    it { expect(Recipient.count).to eq(0) }
+    it { expect(Customer.count).to eq(0) }
     it { expect(Campaign.count).to eq(0) }
     it { expect(result.errors.full_messages).to eq(expected_errors) }
   end
@@ -55,35 +55,35 @@ describe Campaigns::Creator do
     end
 
     it { expect(result.success?).to be_falsey }
-    it { expect(Recipient.count).to eq(0) }
+    it { expect(Customer.count).to eq(0) }
     it { expect(Campaign.count).to eq(0) }
     it { expect(result.errors.full_messages).to eq(expected_errors) }
   end
 
-  context 'when recipients is already exists' do
+  context 'when customers is already exists' do
     subject!(:result) { described_class.call(params) }
 
-    let!(:existing_recipients) { create_list(:recipient, 3) }
-    let(:emails) { existing_recipients.pluck(:email) }
+    let!(:existing_customers) { create_list(:customer, 3) }
+    let(:emails) { existing_customers.pluck(:email) }
 
     it { expect(result.success?).to be_truthy }
-    it { expect(Recipient.count).to eq(3) }
+    it { expect(Customer.count).to eq(3) }
     it { expect(Campaign.count).to eq(1) }
-    it { expect(Recipient.all).to eq(existing_recipients) }
+    it { expect(Customer.all).to eq(existing_customers) }
   end
 
-  context 'when recipients is already exists and someone new' do
-    context 'when recipients is already exists' do
+  context 'when customers is already exists and someone new' do
+    context 'when customers is already exists' do
       subject!(:result) { described_class.call(params) }
 
-      let!(:existing_recipients) { create_list(:recipient, 3) }
-      let(:new_recipient_email) { 'newrecepient@gmail.com' }
-      let(:emails) { existing_recipients.pluck(:email) | [new_recipient_email] }
+      let!(:existing_customers) { create_list(:customer, 3) }
+      let(:new_customer_email) { 'newrecepient@gmail.com' }
+      let(:emails) { existing_customers.pluck(:email) | [new_customer_email] }
 
       it { expect(result.success?).to be_truthy }
-      it { expect(Recipient.count).to eq(4) }
+      it { expect(Customer.count).to eq(4) }
       it { expect(Campaign.count).to eq(1) }
-      it { expect(Recipient.last.email).to eq(new_recipient_email) }
+      it { expect(Customer.last.email).to eq(new_customer_email) }
     end
   end
 
@@ -92,7 +92,7 @@ describe Campaigns::Creator do
     let(:emails) { 'test1@gmail.com, test2@gmail.com, test3@gmail.com' }
 
     it { expect(result.success?).to be_truthy }
-    it { expect(Recipient.count).to eq(3) }
+    it { expect(Customer.count).to eq(3) }
     it { expect(Campaign.count).to eq(1) }
   end
 end

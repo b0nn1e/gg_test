@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Api::RecipientsController, type: :controller do
+describe Api::CustomersController, type: :controller do
   describe 'GET #index' do
     context 'check auth' do
       it_behaves_like 'check user auth' do
@@ -11,7 +11,7 @@ describe Api::RecipientsController, type: :controller do
     context 'run query' do
       auth_user!
 
-      let(:klass) { Recipients::List }
+      let(:klass) { Customers::List }
 
       before do
         allow(klass).to receive(:call).and_return([])
@@ -34,11 +34,11 @@ describe Api::RecipientsController, type: :controller do
     context 'run query' do
       auth_user!
 
-      let(:klass) { ::Recipients::Item }
-      let(:recipient) { create(:recipient) }
+      let(:klass) { ::Customers::Item }
+      let(:customer) { create(:customer) }
 
       before do
-        allow(klass).to receive(:call).and_return(recipient)
+        allow(klass).to receive(:call).and_return(customer)
         get :show, params: { id: 1 }
       end
 

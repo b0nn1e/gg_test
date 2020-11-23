@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'GET /api/recipients/:id' do
+describe 'GET /api/customers/:id' do
   let(:token) { Auth::TOKEN }
   let(:headers) do
     {
@@ -8,14 +8,14 @@ describe 'GET /api/recipients/:id' do
       "Authorization": "Bearer #{token}"
     }
   end
-  let!(:recipient) { create(:recipient) }
-  let!(:campaign) { create_list(:campaign, 3, recipients: [recipient]) }
+  let!(:customer) { create(:customer) }
+  let!(:campaign) { create_list(:campaign, 3, customers: [customer]) }
 
   context 'success request' do
     let(:expected_response) do
       {
-        id: recipient.id,
-        email: recipient.email,
+        id: customer.id,
+        email: customer.email,
         campaigns: [
           {
             id: campaign[0].id,
@@ -37,7 +37,7 @@ describe 'GET /api/recipients/:id' do
     end
 
     it do
-      get "/api/recipients/#{recipient.id}", headers: headers
+      get "/api/customers/#{customer.id}", headers: headers
       json_response = JSON.parse(response.body)
 
       expect(response.status).to eq(200)
@@ -52,7 +52,7 @@ describe 'GET /api/recipients/:id' do
     end
 
     it do
-      get "/api/recipients/#{recipient.id}", headers: headers
+      get "/api/customers/#{customer.id}", headers: headers
 
       expect(response.status).to eq(401)
       expect(response.body).to eq(expected_body)

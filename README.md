@@ -70,10 +70,10 @@ Status: 422 unprocessable_entity
 
 See more details [spec/requests/api/create_campaings_spec.rb](https://github.com/b0nn1e/gg_test/blob/features/spec/requests/api/create_campaings_spec.rb)
 
-### Show recipients list
+### Show customers list
 #### Request
 ```
-GET /api/recipients
+GET /api/customers
 
 Authorization: "Bearer 8d4aa039dde3f9cf90dc68e0d32b6f90"
 Content-Type: "application/json"
@@ -85,27 +85,27 @@ Status: 200
 [
   {
     "id": 3262,
-    "email": "recipient4@gmail.com",
+    "email": "customer4@gmail.com",
     "campaigns_count": 2
   },
   {
     "id": 3263,
-    "email": "recipient5@gmail.com",
+    "email": "customer5@gmail.com",
     "campaigns_count": 1
   },
   {
     "id": 3264,
-    "email": "recipient6@gmail.com",
+    "email": "customer6@gmail.com",
     "campaigns_count": 1
   }
 ]
 ```
-See more details [spec/requests/api/show_recipients_list_spec.rb](https://github.com/b0nn1e/gg_test/blob/features/spec/requests/api/show_recipients_list_spec.rb)
+See more details [spec/requests/api/show_customers_list_spec.rb](https://github.com/b0nn1e/gg_test/blob/features/spec/requests/api/show_customers_list_spec.rb)
 
-### Show recipient’s campaigns
+### Show customer’s campaigns
 #### Request
 ```
-GET /api/recipients/:id
+GET /api/customers/:id
 
 Authorization: "Bearer 8d4aa039dde3f9cf90dc68e0d32b6f90"
 Content-Type: "application/json"
@@ -116,7 +116,7 @@ Status: 200
 
 {
   "id": 123,
-  "email": "recipient2@gmail.com",
+  "email": "customer2@gmail.com",
   "campaigns": [
     {
       "id": 1225,
@@ -137,4 +137,4 @@ Status: 200
 }
 ```
 
-See more details [spec/requests/api/show_recipient_item_spec.rb](https://github.com/b0nn1e/gg_test/blob/features/spec/requests/api/show_recipient_item_spec.rb)
+See more details [spec/requests/api/show_customer_item_spec.rb](https://github.com/b0nn1e/gg_test/blob/features/spec/requests/api/show_customer_item_spec.rb)

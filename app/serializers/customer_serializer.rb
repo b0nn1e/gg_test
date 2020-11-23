@@ -1,4 +1,4 @@
-class RecipientSerializer < Blueprinter::Base
+class CustomerSerializer < Blueprinter::Base
   fields :id, :email
 
   view :list do
