@@ -16,33 +16,30 @@ describe 'GET /api/recipients' do
     let!(:campaign1) { create(:campaign, recipients: [recipient1, recipient2]) }
     let!(:campaign2) { create(:campaign, recipients: [recipient1, recipient3]) }
     let(:expected_response) do
-      {
-        recipients: [
-          {
-            id: recipient1.id,
-            email: recipient1.email,
-            campaigns_count: 2
-          },
-          {
-            id: recipient2.id,
-            email: recipient2.email,
-            campaigns_count: 1
-          },
-          {
-            id: recipient3.id,
-            email: recipient3.email,
-            campaigns_count: 1
-          }
-        ]
-      }.with_indifferent_access
+      [
+        {
+          id: recipient1.id,
+          email: recipient1.email,
+          campaigns_count: 2
+        },
+        {
+          id: recipient2.id,
+          email: recipient2.email,
+          campaigns_count: 1
+        },
+        {
+          id: recipient3.id,
+          email: recipient3.email,
+          campaigns_count: 1
+        }
+      ].to_json
     end
 
     it do
       get '/api/recipients', params: {}, headers: headers
-      json_response = JSON.parse(response.body)
 
       expect(response.status).to eq(200)
-      expect(json_response).to match(expected_response)
+      expect(response.body).to match(expected_response)
     end
   end
 

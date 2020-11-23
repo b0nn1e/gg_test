@@ -82,25 +82,23 @@ Content-Type: "application/json"
 ```
 Status: 200
 
-{
-  "recipients": [
-    {
-      "id": 3262,
-      "email": "recipient4@gmail.com",
-      "campaigns_count": 2
-    },
-    {
-      "id": 3263,
-      "email": "recipient5@gmail.com",
-      "campaigns_count": 1
-    },
-    {
-      "id": 3264,
-      "email": "recipient6@gmail.com",
-      "campaigns_count": 1
-    }
-  ]
-}
+[
+  {
+    "id": 3262,
+    "email": "recipient4@gmail.com",
+    "campaigns_count": 2
+  },
+  {
+    "id": 3263,
+    "email": "recipient5@gmail.com",
+    "campaigns_count": 1
+  },
+  {
+    "id": 3264,
+    "email": "recipient6@gmail.com",
+    "campaigns_count": 1
+  }
+]
 ```
 See more details [spec/requests/api/show_recipients_list_spec.rb](https://github.com/b0nn1e/gg_test/blob/features/spec/requests/api/show_recipients_list_spec.rb)
 
