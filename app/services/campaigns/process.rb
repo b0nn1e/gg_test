@@ -1,5 +1,5 @@
 module Campaigns
-  class Sender < ApplicationService
+  class Process < ApplicationService
     attr_accessor :campaign_id
 
     def initialize(campaign_id:)

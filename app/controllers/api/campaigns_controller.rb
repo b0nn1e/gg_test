@@ -9,7 +9,7 @@ module Api
       if result.success?
         head :created
       else
-        render json: { errors: result.errors }, status: 422
+        render json: { errors: result.errors }, status: :unprocessable_entity
       end
     end
 

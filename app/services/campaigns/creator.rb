@@ -19,7 +19,7 @@ module Campaigns
       campaign.customers = create_customers
       if campaign.valid?
         campaign.save
-        BuildMailersJob.perform_later(campaign_id: campaign.id)
+        ProcessCampaignJob.perform_later(campaign_id: campaign.id)
         true
       else
         add_errors(campaign.errors) unless campaign.valid?
