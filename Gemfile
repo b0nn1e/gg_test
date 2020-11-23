@@ -19,9 +19,10 @@ gem 'puma', '~> 4.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-gem 'email_validator'
-gem 'sendgrid-ruby'
-gem 'mailgun-ruby', '~>1.1.6'
+gem 'blueprinter', '~> 0.25'
+gem 'email_validator', '~> 2.0'
+gem 'mailgun-ruby', '~> 1.1'
+gem 'sendgrid-ruby', '~> 6.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -32,15 +33,15 @@ gem 'bootsnap', '>= 1.4.2', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'factory_bot_rails'
-  gem 'pry', '~> 0.13.1'
-  gem 'rspec-rails'
+  gem 'factory_bot_rails', '~> 6.1'
+  gem 'pry', '~> 0.13'
+  gem 'rspec-rails', '~> 4.0'
 end
 
 group :development do
   gem 'listen', '~> 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'spring', '~> 2.1'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
