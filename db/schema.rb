@@ -22,18 +22,18 @@ ActiveRecord::Schema.define(version: 2020_11_19_131243) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "campaigns_recipients", id: false, force: :cascade do |t|
+  create_table "campaigns_customers", id: false, force: :cascade do |t|
     t.bigint "campaign_id", null: false
-    t.bigint "recipient_id", null: false
-    t.index ["campaign_id"], name: "index_campaigns_recipients_on_campaign_id"
-    t.index ["recipient_id"], name: "index_campaigns_recipients_on_recipient_id"
+    t.bigint "customer_id", null: false
+    t.index ["campaign_id"], name: "index_campaigns_customers_on_campaign_id"
+    t.index ["customer_id"], name: "index_campaigns_customers_on_customer_id"
   end
 
-  create_table "recipients", force: :cascade do |t|
+  create_table "customers", force: :cascade do |t|
     t.string "email", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_recipients_on_email"
+    t.index ["email"], name: "index_customers_on_email"
   end
 
 end

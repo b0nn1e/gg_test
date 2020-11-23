@@ -4,12 +4,12 @@ FactoryBot.define do
     message { generate(:message) }
   end
 
-  factory :recipient do
+  factory :customer do
     email { generate(:email) }
   end
 
   sequence :email do |n|
-    "recipient#{n}@gmail.com"
+    "customer#{n}@gmail.com"
   end
 
   sequence :subject do |n|

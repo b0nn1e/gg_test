@@ -1,4 +1,4 @@
-module Recipients
+module Customers
   class Item < ApplicationQuery
     attr_accessor :id
 
@@ -8,7 +8,7 @@ module Recipients
     end
 
     def call
-      Recipient.find(id)
+      Customer.find(id)
     end
   end
 end

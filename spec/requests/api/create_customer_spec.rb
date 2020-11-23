@@ -26,7 +26,7 @@ describe 'POST /api/campaigns', type: :request do
       expect(response.status).to eq(201)
       expect(response.body).to be_empty
       expect(Campaign.count).to eq(1)
-      expect(Recipient.count).to eq(2)
+      expect(Customer.count).to eq(2)
     end
   end
 
@@ -43,7 +43,7 @@ describe 'POST /api/campaigns', type: :request do
       expect(response.status).to eq(401)
       expect(response.body).to eq(expected_body)
       expect(Campaign.count).to eq(0)
-      expect(Recipient.count).to eq(0)
+      expect(Customer.count).to eq(0)
     end
   end
 
@@ -69,7 +69,7 @@ describe 'POST /api/campaigns', type: :request do
       expect(response.status).to eq(422)
       expect(response.body).to eq(expected_body)
       expect(Campaign.count).to eq(0)
-      expect(Recipient.count).to eq(0)
+      expect(Customer.count).to eq(0)
     end
   end
 end
