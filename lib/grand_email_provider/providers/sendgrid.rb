@@ -9,8 +9,8 @@ module GrandEmailProvider
 
       def initialize
         super
-        # TODO: move to secrets
-        self.api_key = 'FAKE_SENDGRID_API_KEY'
+
+        self.api_key = Rails.application.credentials.sendgrid[:key]
       end
 
       def send_email(email, subject, message)

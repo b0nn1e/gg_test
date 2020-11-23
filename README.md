@@ -12,12 +12,20 @@ postgresql
 ```
 git clone https://github.com/b0nn1e/gg_test.git
 cd gg_test
-git checkout features
 bundle install
  
 cp config/database.example.yml config/database.yml
+cp config/master.key.development config/master.key
+
 bundle exec rake db:create
 bundle exec rake db:migrate
+```
+
+Edit credentials for MailGun and SendGrid services using command `EDITOR="nano" rails credentials:edit`
+
+## Start server
+```
+rails s
 ```
 
 ## Run tests
