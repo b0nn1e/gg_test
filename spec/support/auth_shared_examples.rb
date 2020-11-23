@@ -32,7 +32,7 @@ shared_examples 'check user auth' do
   end
 
   context 'when authorization token is invalid' do
-    let(:token) { Api::BaseController::TOKEN }
+    let(:token) { Auth::TOKEN }
 
     before { request.headers['Authorization'] = "Bearer #{token.reverse}" }
 
