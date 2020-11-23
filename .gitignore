@@ -28,3 +28,6 @@
 
 # Ignore RubyMine configs
 /.idea
+
+# Database config
+config/database.yml
