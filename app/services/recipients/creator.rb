@@ -1,4 +1,4 @@
-module RecipientManager
+module Recipients
   class Creator < ApplicationService
     attr_accessor :email
 

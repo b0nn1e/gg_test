@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe RecipientManager::Creator do
+describe Recipients::Creator do
   let(:email) { 'validemail@gmail.com' }
   let(:params) { { email: email } }
 

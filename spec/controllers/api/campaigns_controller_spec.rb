@@ -19,7 +19,7 @@ describe Api::CampaignsController, type: :controller do
       auth_user!
 
       it_behaves_like 'run service' do
-        let(:klass) { CampaignManager::Creator }
+        let(:klass) { Campaigns::Creator }
         let(:action) { -> { post :create, params: { campaign: params } } }
       end
     end
