@@ -21,7 +21,7 @@ module GrandEmailProvider
 
         sg = SendGrid::API.new(api_key: api_key)
         response = sg.client.mail._('send').post(request_body: mail.to_json)
-        puts response.status_code
+
         response.status_code == 200
       end
     end
