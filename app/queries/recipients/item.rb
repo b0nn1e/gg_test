@@ -8,7 +8,7 @@ module Recipients
     end
 
     def call
-      Recipient.joins(:campaigns).find(id)
+      Recipient.find(id)
     end
   end
 end
